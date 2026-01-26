@@ -1,0 +1,33 @@
+<div class="modal" *ngIf="showAddRehearsalDialog">
+  <div>
+    <h3>{{ editMode ? 'Редагувати репетицію' : 'Додати репетицію' }}</h3>
+    <form (ngSubmit)="onSave()" autocomplete="off">
+      <div class="modal-form-grid">
+        <div class="form-group">
+          <label>Дата</label>
+          <input class="form-control" type="date" [(ngModel)]="rehearsal.date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label>Час</label>
+          <input class="form-control" type="time" [(ngModel)]="rehearsal.time" name="time" required>
+        </div>
+        <div class="form-group form-group--full">
+          <label>Вистава</label>
+          <input class="form-control" type="text" [(ngModel)]="rehearsal.performance" name="performance" required>
+        </div>
+        <div class="form-group">
+          <label>Сцена</label>
+          <input class="form-control" type="text" [(ngModel)]="rehearsal.stage" name="stage" required>
+        </div>
+        <div class="form-group form-group--full">
+          <label>Актори (через кому)</label>
+          <input class="form-control" type="text" [(ngModel)]="rehearsal.actors" name="actors" required>
+        </div>
+      </div>
+      <div style="display: flex; gap: 12px; margin-top: 18px; justify-content: flex-end;">
+        <button type="submit" class="btn btn-success">{{ editMode ? 'Зберегти' : 'Додати' }}</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Скасувати</button>
+      </div>
+    </form>
+  </div>
+</div>

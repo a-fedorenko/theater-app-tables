@@ -1,0 +1,186 @@
+<div class="performance-list-container">
+  <div class="header">
+    <h1>Репертуар театру</h1>
+    <div class="header-actions">
+        <div class="search-container">
+          <app-search [(value)]="searchTerm" placeholder="Пошук вистави..."></app-search>
+        </div>
+      <button class="btn btn-primary" (click)="createPerformance()">
+        Додати виставу
+      </button>
+      <div class="modal" *ngIf="showAddDialog">
+        <app-add-performance-dialog
+          [showAddPerformanceDialog]="showAddDialog"
+          [allActors]="allActors"
+          [editMode]="!!editingPerformance"
+          [editData]="addDialogData"
+          (save)="onDialogSave($event)"
+          (cancel)="onDialogCancel()">
+        </app-add-performance-dialog>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-cards">
+    <div class="stat-card" [class.active]="sortBy === 'all'" (click)="setSortBy('all')">
+      <div class="stat-label">Всі вистави</div>
+      <div class="stat-value">{{ performances.length }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'working'" (click)="setSortBy('working')">
+      <div class="stat-label">В роботі</div>
+      <div class="stat-value">{{ getCountByStatus('В роботі') }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'active'" (click)="setSortBy('active')">
+      <div class="stat-label">Активні</div>
+      <div class="stat-value">{{ getCountByStatus('Активні') }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'month'" (click)="setSortBy('month')">
+      <div class="stat-label">Цього місяця</div>
+      <div class="stat-value">{{ getCountThisMonth() }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'today'" (click)="setSortBy('today')">
+      <div class="stat-label">Сьогодні</div>
+      <div class="stat-value">{{ getCountToday() }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'suspended'" (click)="setSortBy('suspended')">
+      <div class="stat-label">Призупинені</div>
+      <div class="stat-value">{{ getCountByStatus('Призупинені') }}</div>
+    </div>
+  </div>
+
+  <div class="table-header">
+    <h2>Вистави</h2>
+    <div class="table-info">{{ filteredPerformances.length }} результатів знайдено</div>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    <p>Завантаження вистав...</p>
+  </div>
+
+  <div class="table-container" *ngIf="!loading && filteredPerformances.length > 0">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;"></th>
+          <th>Назва</th>
+          <th>Жанр</th>
+          <th>Артисти</th>
+          <th>Статус</th>
+          <th>Режисер</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let performance of filteredPerformances">
+          <tr class="table-row" (click)="viewDetails((performance.performanceId || performance.id).toString())">
+            <td class="expand-cell">
+              <button 
+                class="expand-btn" 
+                (click)="toggleExpand((performance.performanceId || performance.id).toString(), $event)"
+                [class.expanded]="isExpanded((performance.performanceId || performance.id).toString())"
+                title="Розгорнути">
+                <img *ngIf="!isExpanded((performance.performanceId || performance.id).toString())" src="assets/icons/plus.svg" alt="Expand" width="20" height="20">
+                <img *ngIf="isExpanded((performance.performanceId || performance.id).toString())" src="assets/icons/minus.svg" alt="Collapse" width="20" height="20">
+              </button>
+            </td>
+            <td class="name-cell">
+              <div class="name-info">
+                <div class="name">{{ performance.title }}</div>
+                <div class="duration">{{ performance.duration }} хв</div>
+              </div>
+            </td>
+            <td class="genre-cell">{{ performance.genre }}</td>
+            <td class="actors-cell">
+              <div class="actor-avatars">
+                <div class="avatar-item" *ngFor="let actor of performance.actors?.slice(0, 4)" [title]="actor.name">
+                  <img [src]="actor.photoUrl" [alt]="actor.name" />
+                </div>
+                <div class="avatar-item more" *ngIf="performance.actors && performance.actors.length > 4">
+                  +{{ performance.actors.length - 4 }}
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="status-badge" [class]="'status-' + getStatusClass(performance)">
+                {{ getStatus(performance) }}
+              </span>
+            </td>
+            <td class="director-cell">{{ performance.director || 'Не вказано' }}</td>
+            <td class="actions-cell">
+              <button 
+                class="icon-btn edit-btn" 
+                (click)="editPerformance((performance.performanceId || performance.id).toString(), $event)"
+                title="Редагувати">
+                <img src="assets/icons/edit.svg" alt="Edit" width="16" height="16">
+              </button>
+              <button 
+                class="icon-btn delete-btn" 
+                (click)="deletePerformance((performance.performanceId || performance.id).toString(), $event)"
+                title="Видалити">
+                <img src="assets/icons/delete.svg" alt="Delete" width="16" height="16">
+              </button>
+            </td>
+          </tr>
+          <tr class="expanded-row" *ngIf="isExpanded((performance.performanceId || performance.id).toString())">
+            <td colspan="7">
+              <div class="expanded-content">
+                <div class="expanded-section">
+                  <h3>Опис</h3>
+                  <p>{{ performance.description }}</p>
+                </div>
+                <div class="expanded-grid">
+                  <div class="expanded-section" *ngIf="performance.premiere_date">
+                    <h3>Дата прем'єри</h3>
+                    <p>{{ performance.premiere_date | date:'dd.MM.yyyy' }}</p>
+                  </div>
+                  <div class="expanded-section">
+                    <h3>Тривалість</h3>
+                    <p>{{ performance.duration }} хвилин</p>
+                  </div>
+                  <div class="expanded-section" *ngIf="performance.director">
+                    <h3>Режисер</h3>
+                    <p>{{ performance.director }}</p>
+                  </div>
+                </div>
+                <div class="expanded-section">
+                  <h3>Репетиції</h3>
+                  <ng-container *ngIf="getRehearsalsForPerformance(performance.title).length > 0; else noRehearsals">
+                    <table class="rehearsal-table">
+                      <thead>
+                        <tr>
+                          <th>Дата</th>
+                          <th>Час</th>
+                          <th>Сцена</th>
+                          <th>Актори</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let rehearsal of getRehearsalsForPerformance(performance.title)">
+                          <td>{{ rehearsal.date }}</td>
+                          <td>{{ rehearsal.time }}</td>
+                          <td>{{ rehearsal.stage }}</td>
+                          <td>{{ rehearsal.actors.join(', ') }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </ng-container>
+                  <ng-template #noRehearsals>
+                    <p>Репетицій для цієї вистави не знайдено</p>
+                  </ng-template>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="no-results" *ngIf="!loading && filteredPerformances.length === 0">
+    <p>Вистав не знайдено</p>
+  </div>
+</div>

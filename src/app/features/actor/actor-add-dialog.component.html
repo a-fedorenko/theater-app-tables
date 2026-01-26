@@ -1,0 +1,19 @@
+<div class="modal" *ngIf="showAddActorDialog" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+  <div style="background: #fff; padding: 24px; border-radius: 8px; min-width: 320px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+    <h3>Новий актор</h3>
+    <label>Ім'я:</label>
+    <input [(ngModel)]="newActorFirstName" class="form-control" placeholder="Ім'я" />
+    <label>Прізвище:</label>
+    <input [(ngModel)]="newActorLastName" class="form-control" placeholder="Прізвище" />
+    <label>Дата народження:</label>
+    <input type="date" [(ngModel)]="newActorBirthDate" class="form-control" />
+    <label>Фото (URL):</label>
+    <input [(ngModel)]="newActorPhotoUrl" class="form-control" placeholder="Фото (URL)" />
+    <label>Біографія:</label>
+    <textarea [(ngModel)]="newActorBiography" class="form-control" placeholder="Біографія"></textarea>
+    <div style="margin-top: 16px; display: flex; gap: 8px;">
+      <button class="btn btn-success" (click)="saveNewActor()">Зберегти</button>
+      <button class="btn btn-secondary" (click)="cancelAddActor()">Скасувати</button>
+    </div>
+  </div>
+</div>

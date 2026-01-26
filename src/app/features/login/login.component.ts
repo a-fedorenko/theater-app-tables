@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
@@ -6,7 +8,9 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class LoginComponent implements OnInit {
 
@@ -33,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    this.authService.login(this.loginForm.getRawValue());
+    //this.authService.login(this.loginForm.getRawValue());
     this.loginForm.disable();
     this.initForm();
   }

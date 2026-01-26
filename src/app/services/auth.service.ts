@@ -1,60 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
-import { User } from '../models/user-model';
-
-export interface Response {
-  successful: boolean,
-  result: string,
-  user: User
-}
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../models/performance.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'http://localhost:8080/api/auth';
 
-  user$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private router: Router
-  ) { }
-
-  login(user: {
-    email: string,
-    password: string
-  }): void {
-    const userReg = window.localStorage.getItem('user');
-    if (userReg && this.registeredUser(user)) {
-      this.user$.next(JSON.parse(userReg));
-      this.router.navigate(['/']);
-    } else {
-      window.alert('Email or password is invalid');
-    }
+  registerUser(email: string, password: string, login: string, firstName: string, lastName: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/register`, {
+      email, password, login, firstName, lastName
+    });
   }
 
-  registeredUser(
-    user: {
-      email: string,
-      password: string
-    }
-  ): boolean {
-    const userReg = window.localStorage.getItem('user');
-    if (userReg 
-      && JSON.parse(userReg).email === user.email 
-      && JSON.parse(userReg).password === user.password) {
-        return true;
-    }
-    return false;
+  loginUser(email: string, password: string): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/login`, {
+      email, password
+    });
   }
 
-  logout(): void {
-    this.user$.next(null);
+  logoutUser(userId: number): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/logout`, { userId });
   }
 
-  register(user: User): void {
-    window.localStorage.setItem('user', JSON.stringify(user));
-    this.user$.next(user);
+  deleteUser(userId: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/${userId}`);
   }
 
+  updateUser(userId: number, email: string, password: string, data: any): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${userId}`, {
+      email, password, ...data
+    });
+  }
 }

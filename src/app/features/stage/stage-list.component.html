@@ -1,0 +1,156 @@
+<div class="stage-list-container">
+  <div class="header">
+    <h1>Сцени театру</h1>
+    <div class="header-actions">
+      <div class="search-container">
+          <app-search [(value)]="searchTerm" placeholder="Пошук сцени..."></app-search>
+      </div>
+      <button class="add-button" (click)="createStage()">
+        Додати сцену
+      </button>
+      <app-add-stage-dialog
+        [showAddStageDialog]="showAddStageDialog"
+        [editMode]="addStageEditMode"
+        [editData]="addStageEditData"
+        (save)="onAddStageSave($event)"
+        (cancel)="onAddStageCancel()">
+      </app-add-stage-dialog>
+    </div>
+  </div>
+
+  <div class="stats-cards">
+    <div class="stat-card" [class.active]="sortBy === 'all'" (click)="setSortBy('all')">
+      <div class="stat-label">Всі сцени</div>
+      <div class="stat-value">{{ stages.length }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'available'" (click)="setSortBy('available')">
+      <div class="stat-label">Доступні</div>
+      <div class="stat-value">{{ getCountByStatus('Доступна') }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'occupied'" (click)="setSortBy('occupied')">
+      <div class="stat-label">Зайняті</div>
+      <div class="stat-value">{{ getCountByStatus('Зайнята') }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'maintenance'" (click)="setSortBy('maintenance')">
+      <div class="stat-label">На ремонті</div>
+      <div class="stat-value">{{ getCountByStatus('На ремонті') }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'main'" (click)="setSortBy('main')">
+      <div class="stat-label">Основні</div>
+      <div class="stat-value">{{ getCountByType('Основна') }}</div>
+    </div>
+    <div class="stat-card" [class.active]="sortBy === 'chamber'" (click)="setSortBy('chamber')">
+      <div class="stat-label">Камерні</div>
+      <div class="stat-value">{{ getCountChamber() }}</div>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;"></th>
+          <th>Назва сцени</th>
+          <th>Тип</th>
+          <th>Обладнання</th>
+          <th>Статус</th>
+          <th>Менеджер</th>
+          <th style="width: 120px;">Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let stage of filteredStages">
+          <tr class="data-row">
+            <td class="expand-cell">
+              <button class="expand-btn" (click)="toggleExpand(stage.id, $event)">
+                <img 
+                  [src]="isExpanded(stage.id) ? 'assets/icons/minus.svg' : 'assets/icons/plus.svg'"
+                  [alt]="isExpanded(stage.id) ? 'Collapse' : 'Expand'"
+                  width="16" 
+                  height="16"
+                  [style.transform]="isExpanded(stage.id) ? 'rotate(45deg)' : 'rotate(0deg)'"
+                  style="transition: transform 0.2s ease;"
+                >
+              </button>
+            </td>
+            <td>
+              <span class="stage-name">{{ stage.name }}</span>
+            </td>
+            <td>
+              <span class="stage-type">{{ stage.type }}</span>
+            </td>
+            <td>
+              <div class="equipment-list">
+                <span class="equipment-tag" *ngFor="let eq of stage.equipment.slice(0, 2)">{{ eq }}</span>
+                <span class="equipment-more" *ngIf="stage.equipment.length > 2">+{{ stage.equipment.length - 2 }}</span>
+              </div>
+            </td>
+            <td>
+              <span class="status-badge" [ngClass]="getStatusClass(stage.status)">
+                {{ stage.status }}
+              </span>
+            </td>
+            <td>{{ stage.manager }}</td>
+            <td class="actions-cell">
+              <button 
+                class="icon-btn edit-btn" 
+                (click)="editStage(stage.id, $event)"
+                title="Редагувати">
+                <img src="assets/icons/edit.svg" alt="Edit" width="16" height="16">
+              </button>
+              <button 
+                class="icon-btn delete-btn" 
+                (click)="deleteStage(stage.id, $event)"
+                title="Видалити">
+                <img src="assets/icons/delete.svg" alt="Delete" width="16" height="16">
+              </button>
+            </td>
+          </tr>
+          <tr class="expanded-row" *ngIf="isExpanded(stage.id)">
+            <td colspan="8">
+              <div class="expanded-content">
+                <div class="detail-section">
+                  <h4>Опис</h4>
+                  <p>{{ stage.description }}</p>
+                </div>
+                
+                <div class="detail-grid">
+                  <div class="detail-item">
+                    <strong>Розміри сцени:</strong>
+                    <span *ngIf="stage.dimensions">
+                      {{ stage.dimensions.width }}м × {{ stage.dimensions.depth }}м × {{ stage.dimensions.height }}м (Ш×Г×В)
+                    </span>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <strong>Місткість:</strong>
+                    <span>{{ stage.capacity }} місць</span>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <strong>Технічні можливості:</strong>
+                    <div class="features-list">
+                      <span class="feature-tag" *ngFor="let feature of stage.technicalFeatures">{{ feature }}</span>
+                    </div>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <strong>Повне обладнання:</strong>
+                    <div class="features-list">
+                      <span class="feature-tag" *ngFor="let eq of stage.equipment">{{ eq }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    
+    <div class="empty-state" *ngIf="filteredStages.length === 0">
+      <img src="assets/icons/search-large.svg" alt="No results" width="64" height="64">
+      <p>Сцен не знайдено</p>
+    </div>
+  </div>
+</div>

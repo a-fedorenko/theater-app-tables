@@ -1,0 +1,832 @@
+{
+  "users": [
+    {
+      "userId": "1",
+      "login": "director_vasyl",
+      "email": "vasyl@theater.com",
+      "firstName": "Василь",
+      "lastName": "Сокальський",
+      "createdAt": "2025-01-01"
+    },
+    {
+      "userId": "2",
+      "login": "actor_ivan",
+      "email": "ivan@theater.com",
+      "firstName": "Іван",
+      "lastName": "Франко",
+      "createdAt": "2025-01-02"
+    },
+    {
+      "userId": "3",
+      "login": "actor_mariya",
+      "email": "mariya@theater.com",
+      "firstName": "Марія",
+      "lastName": "Заньковецька",
+      "createdAt": "2025-01-02"
+    },
+    {
+      "userId": "4",
+      "login": "actor_pylyp",
+      "email": "pylyp@theater.com",
+      "firstName": "Пилип",
+      "lastName": "Мойсеєнко",
+      "createdAt": "2025-01-03"
+    },
+    {
+      "userId": "5",
+      "login": "actor_lesya",
+      "email": "lesya@theater.com",
+      "firstName": "Леся",
+      "lastName": "Українка",
+      "createdAt": "2025-01-03"
+    }
+  ],
+  "actors": [
+    {
+      "actorId": "1",
+      "userId": "2",
+      "login": "actor_ivan",
+      "email": "ivan@theater.com",
+      "firstName": "Іван",
+      "lastName": "Франко",
+      "createdAt": "2025-01-02",
+      "dateOfBirth": "1980-05-15",
+      "contactInfo": "+38-095-123-45-67",
+      "hireDate": "2020-01-15",
+      "salary": 15000,
+      "protectedRole": "actor",
+      "biography": "Талановитий актор з 25-річним досвідом роботи на театральній сцені",
+      "portfolio": "Роман у листах, Мойсей, Король Лір",
+      "awards": "Нагорода Золота маска (2020), Національна театральна премія (2021)",
+      "singular": "Грає роль чутливого та глибокого персонажа"
+    },
+    {
+      "actorId": "2",
+      "userId": "3",
+      "login": "actor_mariya",
+      "email": "mariya@theater.com",
+      "firstName": "Марія",
+      "lastName": "Заньковецька",
+      "createdAt": "2025-01-02",
+      "dateOfBirth": "1985-08-22",
+      "contactInfo": "+38-096-234-56-78",
+      "hireDate": "2019-06-01",
+      "salary": 14500,
+      "protectedRole": "actor",
+      "biography": "Видатна актриса, спеціалізується на драматичних ролях",
+      "portfolio": "Наймичка, Украдене щастя, Ванька Морозко",
+      "awards": "Фестивальна премія (2019), Кращої акторки (2022)",
+      "singular": "Виконує складні емоційні сцени з великою граціозністю"
+    },
+    {
+      "actorId": "3",
+      "userId": "4",
+      "login": "actor_pylyp",
+      "email": "pylyp@theater.com",
+      "firstName": "Пилип",
+      "lastName": "Мойсеєнко",
+      "createdAt": "2025-01-03",
+      "dateOfBirth": "1990-03-10",
+      "contactInfo": "+38-097-345-67-89",
+      "hireDate": "2021-09-20",
+      "salary": 12000,
+      "protectedRole": "actor",
+      "biography": "Молодий актор з сучасним підходом до мистецтва",
+      "portfolio": "Вивід життя, Майстер та Маргарита, Гамлет",
+      "awards": "Премія молодого таланту (2021)",
+      "singular": "Спеціалізується на комічних та легких ролях"
+    },
+    {
+      "actorId": "4",
+      "userId": "5",
+      "login": "actor_lesya",
+      "email": "lesya@theater.com",
+      "firstName": "Леся",
+      "lastName": "Українка",
+      "createdAt": "2025-01-03",
+      "dateOfBirth": "1992-11-05",
+      "contactInfo": "+38-098-456-78-90",
+      "hireDate": "2022-02-10",
+      "salary": 11000,
+      "protectedRole": "actor",
+      "biography": "Актриса з баскійським голосом та граціозними рухами",
+      "portfolio": "Камінний гість, Фауст, Риба коротаблизька",
+      "awards": "Нагорода театру за найкращу актрису другого плану (2023)",
+      "singular": "Грає ролі з пісенними номерами"
+    },
+    {
+      "actorId": "5",
+      "userId": "6",
+      "login": "actor_mykola",
+      "email": "mykola@theater.com",
+      "firstName": "Микола",
+      "lastName": "Садовський",
+      "createdAt": "2025-01-04",
+      "dateOfBirth": "1988-07-18",
+      "contactInfo": "+38-093-567-89-01",
+      "hireDate": "2020-05-12",
+      "salary": 13500,
+      "protectedRole": "actor",
+      "biography": "Майстер характерних ролей, відомий своєю універсальністю",
+      "portfolio": "Ревізор, Безталанна, Украдене щастя",
+      "awards": "Премія за найкращу чоловічу роль другого плану (2022)",
+      "singular": "Створює яскраві образи другорядних персонажів"
+    },
+    {
+      "actorId": "6",
+      "userId": "7",
+      "login": "actor_oxana",
+      "email": "oxana@theater.com",
+      "firstName": "Оксана",
+      "lastName": "Петрусенко",
+      "createdAt": "2025-01-04",
+      "dateOfBirth": "1995-02-25",
+      "contactInfo": "+38-067-678-90-12",
+      "hireDate": "2023-03-15",
+      "salary": 10500,
+      "protectedRole": "actor",
+      "biography": "Молода талановита актриса з сильним драматичним потенціалом",
+      "portfolio": "Лісова пісня, Енеїда, Наймичка",
+      "awards": "Відкриття року (2024)",
+      "singular": "Вражає емоційною відкритістю на сцені"
+    },
+    {
+      "actorId": "7",
+      "userId": "8",
+      "login": "actor_taras",
+      "email": "taras@theater.com",
+      "firstName": "Тарас",
+      "lastName": "Шевченко",
+      "createdAt": "2025-01-05",
+      "dateOfBirth": "1983-04-12",
+      "contactInfo": "+38-050-789-01-23",
+      "hireDate": "2018-09-01",
+      "salary": 16000,
+      "protectedRole": "actor",
+      "biography": "Досвідчений актор з потужною сценічною присутністю",
+      "portfolio": "Мойсей, Гамлет, Король Лір",
+      "awards": "Заслужений артист України (2020), Золота маска (2019)",
+      "singular": "Спеціалізується на трагічних та епічних ролях"
+    },
+    {
+      "actorId": "8",
+      "userId": "9",
+      "login": "actor_natalia",
+      "email": "natalia@theater.com",
+      "firstName": "Наталія",
+      "lastName": "Ужвій",
+      "createdAt": "2025-01-05",
+      "dateOfBirth": "1991-09-30",
+      "contactInfo": "+38-063-890-12-34",
+      "hireDate": "2021-11-20",
+      "salary": 12500,
+      "protectedRole": "actor",
+      "biography": "Актриса з витонченим почуттям гумору та легкістю на сцені",
+      "portfolio": "Кайдашева сім'я, Енеїда, Наймичка",
+      "awards": "Премія за найкращу комедійну роль (2023)",
+      "singular": "Майстерно поєднує комедію та драму"
+    }
+  ],
+  "performances": [
+    {
+      "performanceId": "1",
+      "title": "Мойсей",
+      "genre": "Драма",
+      "duration": 180,
+      "description": "Грандіозна історична драма про пророка Мойсея, його боротьбу за свободу та духовне піднесення. Виконавці: Іван Франко, Марія Заньковецька.",
+      "director": "Василь Сокальський",
+      "premiere": "2025-02-01",
+      "ageRestriction": 16
+    },
+    {
+      "performanceId": "2",
+      "title": "Гамлет",
+      "genre": "Трагедія",
+      "duration": 200,
+      "description": "Світова класика Шекспіра про принца Гамлета та його пошуки справедливості. Амбітна постановка з використанням сучасних технологій сцени.",
+      "director": "Василь Сокальський",
+      "premiere": "2025-03-15",
+      "ageRestriction": 14
+    },
+    {
+      "performanceId": "3",
+      "title": "Король Лір",
+      "genre": "Трагедія",
+      "duration": 210,
+      "description": "Шекспірівська трагедія про падіння mogu старого короля та його переосмислення цінностей сім'ї та влади.",
+      "director": "Василь Сокальський",
+      "premiere": "2025-04-10",
+      "ageRestriction": 16
+    },
+    {
+      "performanceId": "4",
+      "title": "Наймичка",
+      "genre": "Комедія",
+      "duration": 120,
+      "description": "Веселе і світле комедійне шоу про буденну життя та забавні перипетії героїв.",
+      "director": "Василь Сокальський",
+      "premiere": "2025-05-20",
+      "ageRestriction": 12
+    },
+    {
+      "performanceId": "5",
+      "title": "Майстер та Маргарита",
+      "genre": "Драма",
+      "duration": 220,
+      "description": "Екранізація роману Булгакова - історія про кохання, вибір та вічне намаганню творців. Сполучення фантазії та реальності.",
+      "director": "Василь Сокальський",
+      "premiere": "2025-06-05",
+      "ageRestriction": 18
+    },
+    {
+      "performanceId": "6",
+      "title": "Украдене щастя",
+      "genre": "Драма",
+      "duration": 150,
+      "description": "Класична українська драма про любов, зраду та відплату. Глибоке психологічне дослідження людських стосунків.",
+      "director": "Василь Сокальський",
+      "premiere": "2024-10-15",
+      "ageRestriction": 16
+    },
+    {
+      "performanceId": "7",
+      "title": "Лісова пісня",
+      "genre": "Феєрія",
+      "duration": 140,
+      "description": "Поетична феєрія Лесі Українки про кохання людини та лісової мавки. Магічна атмосфера українського фольклору.",
+      "director": "Василь Сокальський",
+      "premiere": "2024-11-20",
+      "ageRestriction": 12
+    },
+    {
+      "performanceId": "8",
+      "title": "Енеїда",
+      "genre": "Комедія",
+      "duration": 130,
+      "description": "Веселий гумористичний переспів Котляревського. Бурлескна подорож козацького ватажка через міфічні землі.",
+      "director": "Василь Сокальський",
+      "premiere": "2024-12-10",
+      "ageRestriction": 14
+    },
+    {
+      "performanceId": "9",
+      "title": "Кайдашева сім'я",
+      "genre": "Комедія",
+      "duration": 125,
+      "description": "Сатирична комедія про буденне життя українського села та комічні непорозуміння в родині Кайдашів.",
+      "director": "Василь Сокальський",
+      "premiere": "2024-09-05",
+      "ageRestriction": 12
+    }
+  ],
+  "roles": [
+    {
+      "roleId": "1",
+      "performanceId": "1",
+      "characterName": "Мойсей",
+      "description": "Головна роль - пророк, лідер та духовна душа п'єси. Вимагає глибокого розуміння історії та психології персонажа.",
+      "importance": "lead",
+      "actorId": "1"
+    },
+    {
+      "roleId": "2",
+      "performanceId": "1",
+      "characterName": "Єлізавета",
+      "description": "Жінка Мойсея - роль, що вимагає нежності та психологічної глибини",
+      "importance": "lead",
+      "actorId": "2"
+    },
+    {
+      "roleId": "3",
+      "performanceId": "2",
+      "characterName": "Гамлет",
+      "description": "Принц Гамлет - одна з найбільших ролей у світовій драматургії",
+      "importance": "lead",
+      "actorId": "1"
+    },
+    {
+      "roleId": "4",
+      "performanceId": "2",
+      "characterName": "Офелія",
+      "description": "Королівна, трагічна героїня, втягнута у вир подій",
+      "importance": "lead",
+      "actorId": "2"
+    },
+    {
+      "roleId": "5",
+      "performanceId": "3",
+      "characterName": "Король Лір",
+      "description": "Старий король у пошуках справедливості та правди",
+      "importance": "lead",
+      "actorId": "1"
+    },
+    {
+      "roleId": "6",
+      "performanceId": "4",
+      "characterName": "Петрусь",
+      "description": "Веселий селянин з гарним почуттям гумору",
+      "importance": "lead",
+      "actorId": "3"
+    },
+    {
+      "roleId": "7",
+      "performanceId": "4",
+      "characterName": "Зінаїда",
+      "description": "Енергійна селянка, супротивниця Петруся",
+      "importance": "lead",
+      "actorId": "4"
+    },
+    {
+      "roleId": "8",
+      "performanceId": "5",
+      "characterName": "Майстер",
+      "description": "Письменник, творець визначної романтичної драми",
+      "importance": "lead",
+      "actorId": "3"
+    },
+    {
+      "roleId": "9",
+      "performanceId": "5",
+      "characterName": "Маргарита",
+      "description": "Загадкова красуня, готова на все для любові",
+      "importance": "lead",
+      "actorId": "4"
+    },
+    {
+      "roleId": "10",
+      "performanceId": "6",
+      "characterName": "Микола",
+      "description": "Головний герой, селянин, що бореться за своє щастя",
+      "importance": "lead",
+      "actorId": "1"
+    },
+    {
+      "roleId": "11",
+      "performanceId": "6",
+      "characterName": "Ганна",
+      "description": "Дружина Миколи, втягнута в драматичні події",
+      "importance": "lead",
+      "actorId": "2"
+    },
+    {
+      "roleId": "12",
+      "performanceId": "6",
+      "characterName": "Міхаць",
+      "description": "Антагоніст, що руйнує життя головних героїв",
+      "importance": "lead",
+      "actorId": "3"
+    },
+    {
+      "roleId": "13",
+      "performanceId": "7",
+      "characterName": "Лукаш",
+      "description": "Молодий чоловік, закоханий у лісову мавку",
+      "importance": "lead",
+      "actorId": "3"
+    },
+    {
+      "roleId": "14",
+      "performanceId": "7",
+      "characterName": "Мавка",
+      "description": "Лісова мавка, втілення краси та магії природи",
+      "importance": "lead",
+      "actorId": "4"
+    },
+    {
+      "roleId": "15",
+      "performanceId": "7",
+      "characterName": "Килина",
+      "description": "Наречена Лукаша, звичайна дівчина з села",
+      "importance": "lead",
+      "actorId": "2"
+    },
+    {
+      "roleId": "16",
+      "performanceId": "8",
+      "characterName": "Еней",
+      "description": "Козацький ватажок, головний герой бурлескної пригоди",
+      "importance": "lead",
+      "actorId": "1"
+    },
+    {
+      "roleId": "17",
+      "performanceId": "8",
+      "characterName": "Дідона",
+      "description": "Цариця Карфагену, закохана в Енея",
+      "importance": "lead",
+      "actorId": "4"
+    },
+    {
+      "roleId": "18",
+      "performanceId": "8",
+      "characterName": "Ахат",
+      "description": "Вірний друг і супутник Енея",
+      "importance": "lead",
+      "actorId": "3"
+    },
+    {
+      "roleId": "19",
+      "performanceId": "9",
+      "characterName": "Карпо Кайдаш",
+      "description": "Господар родини, що намагається втримати мир у домі",
+      "importance": "lead",
+      "actorId": "1"
+    },
+    {
+      "roleId": "20",
+      "performanceId": "9",
+      "characterName": "Мотря",
+      "description": "Дружина Карпа, сварлива і хитра господиня",
+      "importance": "lead",
+      "actorId": "2"
+    },
+    {
+      "roleId": "21",
+      "performanceId": "9",
+      "characterName": "Лавін",
+      "description": "Старший син Кайдашів, простодушний парубок",
+      "importance": "lead",
+      "actorId": "3"
+    },
+    {
+      "roleId": "22",
+      "performanceId": "1",
+      "characterName": "Аарон",
+      "description": "Брат Мойсея, його вірний помічник та оратор",
+      "importance": "supporting",
+      "actorId": "5"
+    },
+    {
+      "roleId": "23",
+      "performanceId": "2",
+      "characterName": "Горацій",
+      "description": "Друг Гамлета, вірний та розсудливий супутник",
+      "importance": "supporting",
+      "actorId": "7"
+    },
+    {
+      "roleId": "24",
+      "performanceId": "3",
+      "characterName": "Корделія",
+      "description": "Молодша дочка короля Ліра, єдина справжня та люблява",
+      "importance": "lead",
+      "actorId": "6"
+    },
+    {
+      "roleId": "25",
+      "performanceId": "4",
+      "characterName": "Явдоха",
+      "description": "Сваха, яскравий комедійний персонаж",
+      "importance": "supporting",
+      "actorId": "8"
+    },
+    {
+      "roleId": "26",
+      "performanceId": "5",
+      "characterName": "Воланд",
+      "description": "Таємничий диявол, що керує подіями",
+      "importance": "lead",
+      "actorId": "7"
+    },
+    {
+      "roleId": "27",
+      "performanceId": "6",
+      "characterName": "Хома",
+      "description": "Сусіда Миколи, що втягнутий у драму",
+      "importance": "supporting",
+      "actorId": "5"
+    },
+    {
+      "roleId": "28",
+      "performanceId": "7",
+      "characterName": "Лісовик",
+      "description": "Опікун лісу, магічна істота",
+      "importance": "supporting",
+      "actorId": "7"
+    },
+    {
+      "roleId": "29",
+      "performanceId": "8",
+      "characterName": "Меркурій",
+      "description": "Посланець богів, хитрий та дотепний",
+      "importance": "supporting",
+      "actorId": "5"
+    },
+    {
+      "roleId": "30",
+      "performanceId": "9",
+      "characterName": "Мелашка",
+      "description": "Невістка Кайдашів, сварлива господиня",
+      "importance": "supporting",
+      "actorId": "8"
+    },
+    {
+      "roleId": "31",
+      "performanceId": "6",
+      "characterName": "Парасочка",
+      "description": "Молода дівчина з села, романтична натура",
+      "importance": "supporting",
+      "actorId": "6"
+    },
+    {
+      "roleId": "32",
+      "performanceId": "3",
+      "characterName": "Едмунд",
+      "description": "Підступний син, що плете інтриги",
+      "importance": "supporting",
+      "actorId": "5"
+    }
+  ],
+  "schedules": [
+    {
+      "scheduleId": "1",
+      "performanceId": "1",
+      "scheduledDate": "2025-02-08",
+      "startTime": "19:00",
+      "venueName": "Національний театр імені Франка",
+      "ticketsAvailable": 180
+    },
+    {
+      "scheduleId": "2",
+      "performanceId": "1",
+      "scheduledDate": "2025-02-09",
+      "startTime": "19:00",
+      "venueName": "Національний театр імені Франка",
+      "ticketsAvailable": 120
+    },
+    {
+      "scheduleId": "3",
+      "performanceId": "2",
+      "scheduledDate": "2025-03-20",
+      "startTime": "19:30",
+      "venueName": "Театр на Подолі",
+      "ticketsAvailable": 150
+    },
+    {
+      "scheduleId": "4",
+      "performanceId": "2",
+      "scheduledDate": "2025-03-21",
+      "startTime": "19:30",
+      "venueName": "Театр на Подолі",
+      "ticketsAvailable": 100
+    },
+    {
+      "scheduleId": "5",
+      "performanceId": "3",
+      "scheduledDate": "2025-04-15",
+      "startTime": "18:00",
+      "venueName": "Національний театр імені Франка",
+      "ticketsAvailable": 200
+    },
+    {
+      "scheduleId": "6",
+      "performanceId": "4",
+      "scheduledDate": "2025-05-25",
+      "startTime": "15:00",
+      "venueName": "Театр Лесі Українки",
+      "ticketsAvailable": 80
+    },
+    {
+      "scheduleId": "7",
+      "performanceId": "4",
+      "scheduledDate": "2025-05-26",
+      "startTime": "19:00",
+      "venueName": "Театр Лесі Українки",
+      "ticketsAvailable": 90
+    },
+    {
+      "scheduleId": "8",
+      "performanceId": "5",
+      "scheduledDate": "2025-06-10",
+      "startTime": "19:00",
+      "venueName": "Національний театр імені Франка",
+      "ticketsAvailable": 160
+    }
+  ],
+  "shows": [
+    {
+      "showId": "1",
+      "scheduleId": "1",
+      "performanceId": "1",
+      "showDate": "2025-02-08",
+      "startTime": "19:00",
+      "endTime": "22:00",
+      "venueName": "Національний театр імені Франка",
+      "status": "scheduled"
+    },
+    {
+      "showId": "2",
+      "scheduleId": "2",
+      "performanceId": "1",
+      "showDate": "2025-02-09",
+      "startTime": "19:00",
+      "endTime": "22:00",
+      "venueName": "Національний театр імені Франка",
+      "status": "scheduled"
+    },
+    {
+      "showId": "3",
+      "scheduleId": "3",
+      "performanceId": "2",
+      "showDate": "2025-03-20",
+      "startTime": "19:30",
+      "endTime": "22:50",
+      "venueName": "Театр на Подолі",
+      "status": "scheduled"
+    },
+    {
+      "showId": "4",
+      "scheduleId": "4",
+      "performanceId": "2",
+      "showDate": "2025-03-21",
+      "startTime": "19:30",
+      "endTime": "22:50",
+      "venueName": "Театр на Подолі",
+      "status": "scheduled"
+    },
+    {
+      "showId": "5",
+      "scheduleId": "5",
+      "performanceId": "3",
+      "showDate": "2025-04-15",
+      "startTime": "18:00",
+      "endTime": "21:30",
+      "venueName": "Національний театр імені Франка",
+      "status": "scheduled"
+    },
+    {
+      "showId": "6",
+      "scheduleId": "6",
+      "performanceId": "4",
+      "showDate": "2025-05-25",
+      "startTime": "15:00",
+      "endTime": "16:40",
+      "venueName": "Театр Лесі Українки",
+      "status": "scheduled"
+    },
+    {
+      "showId": "7",
+      "scheduleId": "7",
+      "performanceId": "4",
+      "showDate": "2025-05-26",
+      "startTime": "19:00",
+      "endTime": "20:40",
+      "venueName": "Театр Лесі Українки",
+      "status": "scheduled"
+    },
+    {
+      "showId": "8",
+      "scheduleId": "8",
+      "performanceId": "5",
+      "showDate": "2025-06-10",
+      "startTime": "19:00",
+      "endTime": "23:40",
+      "venueName": "Національний театр імені Франка",
+      "status": "scheduled"
+    }
+  ],
+  "rehearsals": [
+    {
+      "rehearsalId": "1",
+      "performanceId": "1",
+      "scheduledDate": "2025-02-01",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "focus": "Перша акт",
+      "notes": "Внимание на мизансцену в сцене під гримом",
+      "status": "completed"
+    },
+    {
+      "rehearsalId": "2",
+      "performanceId": "1",
+      "scheduledDate": "2025-02-03",
+      "startTime": "14:00",
+      "endTime": "17:00",
+      "focus": "Друга акт",
+      "notes": "Доробити емоційні переходи",
+      "status": "completed"
+    },
+    {
+      "rehearsalId": "3",
+      "performanceId": "1",
+      "scheduledDate": "2025-02-05",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "focus": "Загальна репетиція",
+      "notes": "Прогон з костюмами та гримом",
+      "status": "completed"
+    },
+    {
+      "rehearsalId": "4",
+      "performanceId": "2",
+      "scheduledDate": "2025-03-10",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "focus": "Монолог Гамлета",
+      "notes": "Максимальна концентрація, відпраця дикції",
+      "status": "scheduled"
+    },
+    {
+      "rehearsalId": "5",
+      "performanceId": "2",
+      "scheduledDate": "2025-03-12",
+      "startTime": "14:00",
+      "endTime": "17:00",
+      "focus": "Сцена з привидом",
+      "notes": "Спеціальні ефекти та синхронізація",
+      "status": "scheduled"
+    },
+    {
+      "rehearsalId": "6",
+      "performanceId": "4",
+      "scheduledDate": "2025-05-15",
+      "startTime": "15:00",
+      "endTime": "17:00",
+      "focus": "Песенний номер",
+      "notes": "Доробити хореографію",
+      "status": "scheduled"
+    },
+    {
+      "rehearsalId": "7",
+      "performanceId": "5",
+      "scheduledDate": "2025-05-28",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "focus": "Перша читка",
+      "notes": "Читання сценарія без інтонацій",
+      "status": "scheduled"
+    }
+  ],
+  "rehearsals": [
+    {
+      "rehearsalId": "1",
+      "performanceId": "1",
+      "scheduledDate": "2025-02-01",
+      "startTime": "18:00",
+      "endTime": "21:00",
+      "focus": "Перший акт",
+      "notes": "Відпрацювання сценічних рухів",
+      "status": "completed"
+    },
+    {
+      "rehearsalId": "2",
+      "performanceId": "1",
+      "scheduledDate": "2025-02-03",
+      "startTime": "14:00",
+      "endTime": "17:00",
+      "focus": "Друга акт",
+      "notes": "Доробити емоційні переходи",
+      "status": "completed"
+    },
+    {
+      "rehearsalId": "3",
+      "performanceId": "1",
+      "scheduledDate": "2025-02-05",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "focus": "Загальна репетиція",
+      "notes": "Прогон з костюмами та гримом",
+      "status": "completed"
+    },
+    {
+      "rehearsalId": "4",
+      "performanceId": "2",
+      "scheduledDate": "2025-03-10",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "focus": "Монолог Гамлета",
+      "notes": "Максимальна концентрація, відпраця дикції",
+      "status": "scheduled"
+    },
+    {
+      "rehearsalId": "5",
+      "performanceId": "2",
+      "scheduledDate": "2025-03-12",
+      "startTime": "14:00",
+      "endTime": "17:00",
+      "focus": "Сцена з привидом",
+      "notes": "Спеціальні ефекти та синхронізація",
+      "status": "scheduled"
+    },
+    {
+      "rehearsalId": "6",
+      "performanceId": "4",
+      "scheduledDate": "2025-05-15",
+      "startTime": "15:00",
+      "endTime": "17:00",
+      "focus": "Песенний номер",
+      "notes": "Доробити хореографію",
+      "status": "scheduled"
+    },
+    {
+      "rehearsalId": "7",
+      "performanceId": "5",
+      "scheduledDate": "2025-05-28",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "focus": "Перша читка",
+      "notes": "Читання сценарія без інтонацій",
+      "status": "scheduled"
+    }
+  ]
+}

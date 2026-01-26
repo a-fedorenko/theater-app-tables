@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -7,7 +9,9 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class RegistrationComponent implements OnInit {
 
@@ -31,7 +35,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   submit(): void {
-    this.authService.register(this.registrationForm.getRawValue());
+    //this.authService.register(this.registrationForm.getRawValue());
     this.registrationForm.disable();
     this.initForm();
     this.router.navigate(['/']);

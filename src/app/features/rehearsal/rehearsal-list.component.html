@@ -1,0 +1,57 @@
+<div class="stage-list-container rehearsal-list-container">
+  <div class="header">
+    <h1>Репетиції</h1>
+    <div class="header-actions">
+      <div class="search-container">
+        <app-search [(value)]="searchTerm" placeholder="Пошук репетиції..."></app-search>
+      </div>
+      <button class="add-button" (click)="createRehearsal()">
+        Додати репетицію
+      </button>
+      <app-add-rehearsal-dialog
+        [showAddRehearsalDialog]="showAddRehearsalDialog"
+        [editMode]="addRehearsalEditMode"
+        [editData]="addRehearsalEditData"
+        (save)="onAddRehearsalSave($event)"
+        (cancel)="onAddRehearsalCancel()">
+      </app-add-rehearsal-dialog>
+    </div>
+  </div>
+
+
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Час</th>
+          <th>Вистава</th>
+          <th>Сцена</th>
+          <th>Актори</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rehearsal of rehearsals">
+          <td>{{ rehearsal.date }}</td>
+          <td>{{ rehearsal.time }}</td>
+          <td>{{ rehearsal.performance }}</td>
+          <td>{{ rehearsal.stage }}</td>
+          <td>{{ rehearsal.actors.join(', ') }}</td>
+          <td class="actions-cell">
+            <button class="icon-btn edit-btn" (click)="editRehearsal(rehearsal.id, $event)" title="Редагувати">
+              <img src="assets/icons/edit.svg" alt="Edit" width="16" height="16">
+            </button>
+            <button class="icon-btn delete-btn" (click)="deleteRehearsal(rehearsal.id, $event)" title="Видалити">
+              <img src="assets/icons/delete.svg" alt="Delete" width="16" height="16">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="empty-state" *ngIf="rehearsals.length === 0">
+      <img src="assets/icons/search-large.svg" alt="No results" width="64" height="64">
+      <p>Репетицій не знайдено</p>
+    </div>
+  </div>
+</div>

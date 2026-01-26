@@ -1,33 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { SidebarComponent } from './features/sidebar/sidebar.component';
+import { StageListComponent } from './features/stage/stage-list.component';
+import { ActorListComponent } from './features/actor/actor-list.component';
+import { PerformanceListComponent } from './features/performance/performance-list.component';
+import { LoginComponent } from './features/login/login.component';
+import { RegistrationComponent } from './features/registration/registration.component';
+import { SearchComponent } from './shared/components/search/search.component';
 import { SharedModule } from './shared/shared.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
-import { CoursesModule } from './features/courses/courses.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegistrationModule } from './features/registration/registration.module';
-import { LoginModule } from './features/login/login.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
+    SidebarComponent,
+    StageListComponent,
+    ActorListComponent,
+    PerformanceListComponent,
+    LoginComponent,
+    RegistrationComponent,
+    SearchComponent,
     BrowserModule,
     RouterModule,
-    AppRoutingModule,
     SharedModule,
-    FontAwesomeModule,
-    CoursesModule,
     FormsModule,
     ReactiveFormsModule,
-    RegistrationModule,
-    LoginModule
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: []
 })
 export class AppModule { }

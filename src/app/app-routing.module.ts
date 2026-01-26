@@ -1,28 +1,28 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CourseComponent } from './features/course/course.component';
-import { CoursesComponent } from './features/courses/courses.component';
+import { Routes } from '@angular/router';
 import { RegistrationComponent } from './features/registration/registration.component';
 import { LoginComponent } from './features/login/login.component';
-import { AboutComponent } from './features/about/about.component';
+import { PerformanceListComponent } from './features/performance/performance-list.component';
+import { ActorListComponent } from './features/actor/actor-list.component';
+import { RehearsalListComponent } from './features/rehearsal/rehearsal-list.component';
+import { StageListComponent } from './features/stage/stage-list.component';
 
-const routes: Routes = [
+export const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'courses',
+    redirectTo: '/performances',
     pathMatch: 'full'
   },
   {
-    path: 'courses',
-    component: CoursesComponent,
+    path: 'performances',
+    component: PerformanceListComponent,
   },
   {
-    path: 'courses/:id',
-    component: CourseComponent
+    path: 'actors',
+    component: ActorListComponent
   },
   {
-    path: 'about',
-    component: AboutComponent
+    path: 'stages',
+    component: StageListComponent
   },
   {
     path: 'registration',
@@ -31,11 +31,9 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  }
+  },
+  {
+    path: 'rehearsals',
+    component: RehearsalListComponent
+  },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

@@ -1,0 +1,155 @@
+<div class="actor-list-container">
+  <div class="header">
+    <h1>Актори театру</h1>
+    <div class="header-actions">
+      <div class="search-container">
+          <app-search [(value)]="searchTerm" placeholder="Пошук актора..."></app-search>
+      </div>
+      <button class="btn btn-primary" (click)="createActor()">
+        Додати актора
+      </button>
+      <div *ngIf="showAddActorDialog">
+        <div class="modal" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+          <div style="background: #fff; padding: 24px; border-radius: 8px; min-width: 320px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            <h3>{{ editingActor ? 'Редагувати актора' : 'Новий актор' }}</h3>
+            <label>Ім'я:</label>
+            <input [(ngModel)]="newActorFirstName" class="form-control" placeholder="Ім'я" />
+            <label>Прізвище:</label>
+            <input [(ngModel)]="newActorLastName" class="form-control" placeholder="Прізвище" />
+            <label>Дата народження:</label>
+            <input type="date" [(ngModel)]="newActorBirthDate" class="form-control" />
+            <label>Фото:</label>
+            <input type="file" accept="image/*" (change)="onPhotoFileSelected($event)" class="form-control" />
+            <div *ngIf="newActorPhotoPreview" style="margin: 8px 0; text-align: center;">
+              <img [src]="newActorPhotoPreview" alt="Фото" style="max-width: 120px; max-height: 120px; border-radius: 8px; object-fit: cover;" />
+            </div>
+            <label>Біографія:</label>
+            <textarea [(ngModel)]="newActorBiography" class="form-control" placeholder="Біографія"></textarea>
+            <div style="margin-top: 16px; display: flex; gap: 8px;">
+              <button class="btn btn-success" (click)="saveNewActor()">Зберегти</button>
+              <button class="btn btn-secondary" (click)="cancelAddActor()">Скасувати</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-header">
+    <h2>Актори</h2>
+    <div class="table-info">{{ filteredActors.length }} результатів знайдено</div>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    <p>Завантаження акторів...</p>
+  </div>
+
+  <div class="table-container" *ngIf="!loading && filteredActors.length > 0">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 40px;"></th>
+          <th>Ім'я</th>
+          <th>Амплуа</th>
+          <th>Вистави</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let actor of filteredActors">
+          <tr class="table-row" (click)="viewDetails(actor.id)">
+            <td class="expand-cell">
+              <button 
+                class="expand-btn" 
+                (click)="toggleExpand(actor.id, $event)"
+                [class.expanded]="isExpanded(actor.id)"
+                title="Розгорнути">
+                <img *ngIf="!isExpanded(actor.id)" src="assets/icons/plus.svg" alt="Expand" width="20" height="20">
+                <img *ngIf="isExpanded(actor.id)" src="assets/icons/minus.svg" alt="Collapse" width="20" height="20">
+              </button>
+            </td>
+            <td class="name-cell">
+              <div class="avatar">
+                <img *ngIf="actor.photoUrl" [src]="actor.photoUrl" [alt]="getFullName(actor)" />
+                <span *ngIf="!actor.photoUrl">{{ getInitials(actor.first_name, actor.last_name) }}</span>
+              </div>
+              <div class="name-info">
+                <div class="name">{{ getFullName(actor) }}</div>
+                <div class="duration">{{ actor.biography | slice:0:50 }}...</div>
+              </div>
+            </td>
+            <td class="specialty-cell">{{ actor.specialty || 'Актор' }}</td>
+            <td class="performances-cell">
+              <div class="performance-tags">
+                <span class="performance-tag clickable" 
+                      *ngFor="let performance of actor.performances?.slice(0, 2); let i = index"
+                      (click)="navigateToPerformance(actor, i, $event)">
+                  {{ performance }}
+                </span>
+                <span class="performance-tag more clickable" 
+                      *ngIf="actor.performances && actor.performances.length > 2"
+                      (click)="toggleExpand(actor.id, $event)">
+                  +{{ actor.performances.length - 2 }}
+                </span>
+              </div>
+            </td>
+            <td class="actions-cell">
+              <button 
+                class="icon-btn edit-btn" 
+                (click)="editActor(actor.id, $event)"
+                title="Редагувати">
+                <img src="assets/icons/edit.svg" alt="Edit" width="16" height="16">
+              </button>
+              <button 
+                class="icon-btn delete-btn" 
+                (click)="deleteActor(actor.id, $event)"
+                title="Видалити">
+                <img src="assets/icons/delete.svg" alt="Delete" width="16" height="16">
+              </button>
+            </td>
+          </tr>
+          <tr class="expanded-row" *ngIf="isExpanded(actor.id)">
+            <td colspan="5">
+              <div class="expanded-content">
+                <div class="expanded-section">
+                  <h3>Біографія</h3>
+                  <p>{{ actor.biography }}</p>
+                </div>
+                <div class="expanded-grid">
+                  <div class="expanded-section">
+                    <h3>Дата народження</h3>
+                    <p>{{ actor.birth_date | date:'dd.MM.yyyy' }} ({{ getAge(actor.birth_date) }} років)</p>
+                  </div>
+                  <div class="expanded-section" *ngIf="actor.portfolio">
+                    <h3>Портфоліо</h3>
+                    <p>{{ actor.portfolio }}</p>
+                  </div>
+                  <div class="expanded-section" *ngIf="actor.awards">
+                    <h3>Нагороди</h3>
+                    <p>{{ actor.awards }}</p>
+                  </div>
+                  <div class="expanded-section" *ngIf="actor.contactInfo">
+                    <h3>Контакти</h3>
+                    <p>{{ actor.contactInfo }}</p>
+                  </div>
+                  <div class="expanded-section" *ngIf="actor.performances && actor.performances.length > 0">
+                    <h3>Всі вистави</h3>
+                    <p>{{ actor.performances.join(', ') }}</p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="no-results" *ngIf="!loading && filteredActors.length === 0">
+    <p>Акторів не знайдено</p>
+  </div>
+</div>

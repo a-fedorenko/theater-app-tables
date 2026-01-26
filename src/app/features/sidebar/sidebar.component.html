@@ -1,0 +1,52 @@
+<div class="sidebar">
+  <!-- User Profile -->
+  <div class="user-section">
+    <div class="user-info">
+      <img [src]="userAvatar" alt="User Avatar" class="user-avatar">
+      <div class="user-details">
+        <span class="welcome-text">Вітаємо,</span>
+        <span class="user-name">{{ userName }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Items -->
+  <nav class="menu">
+    <div 
+      *ngFor="let item of menuItems" 
+      class="menu-item"
+      [class.active]="isActiveRoute(item.route)"
+      (click)="navigateTo(item)"
+    >
+      <div class="menu-item-content">
+        <!-- Icons -->
+        <img *ngIf="item.icon === 'search'" src="assets/icons/search.svg" alt="Search" width="20" height="20">
+        <img *ngIf="item.icon === 'table'" src="assets/icons/table.svg" alt="Table" width="20" height="20">
+        <img *ngIf="item.icon === 'users'" src="assets/icons/users.svg" alt="Users" width="20" height="20">
+        <img *ngIf="item.icon === 'layout'" src="assets/icons/layout.svg" alt="Layout" width="20" height="20">
+        <img *ngIf="item.icon === 'calendar'" src="assets/icons/calendar.svg" alt="Calendar" width="20" height="20">
+        <img *ngIf="item.icon === 'message'" src="assets/icons/message.svg" alt="Message" width="20" height="20">
+        <img *ngIf="item.icon === 'chart'" src="assets/icons/chart.svg" alt="Chart" width="20" height="20">
+
+        <span class="menu-label">{{ item.label }}</span>
+        
+        <span class="badge" *ngIf="item.badge">{{ item.badge }}</span>
+      </div>
+      
+      <img class="menu-toggle" src="assets/icons/menu.svg" alt="Menu" width="16" height="16">
+    </div>
+  </nav>
+
+  <!-- Footer Actions -->
+  <div class="footer-actions">
+    <button class="footer-btn" (click)="showSupport()">
+      <img src="assets/icons/support.svg" alt="Support" width="20" height="20">
+      <span>Підтримка</span>
+    </button>
+    
+    <button class="footer-btn sign-out" (click)="signOut()">
+      <img src="assets/icons/sign-out.svg" alt="Sign out" width="20" height="20">
+      <span>Вийти</span>
+    </button>
+  </div>
+</div>
