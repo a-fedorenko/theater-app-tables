@@ -1,0 +1,59 @@
+<div class="wrapper">
+  <div class="auth_block">
+    <form class="auth_form" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="form_content">
+        <span class="form_title">Login</span>
+        <div class="input_field">
+          <input class="input"
+          id="email"
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          [class.invalid]="loginForm.controls['email'].invalid
+          && loginForm.controls['email'].touched"
+        >
+        <span class="invalid_text"
+        *ngIf="loginForm.controls['email'].errors?.['required']">
+          Email is requaired
+        </span>
+        <span class="invalid_text"
+        *ngIf="loginForm.controls['email'].errors?.['email']">
+          Email is incorect
+        </span>
+        </div>
+        <div class="input_field">
+          <input class="input"
+            id="password"
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            [class.invalid]="loginForm.controls['password'].invalid
+            && loginForm.controls['password'].touched"
+          >
+          <span class="invalid_text"
+          *ngIf="loginForm.controls['password'].errors?.['required']">
+            Password is requaired
+          </span>
+          <span class="invalid_text"
+          *ngIf="loginForm.controls['password'].errors?.['minlength']">
+            Password must be at least 6 characters long
+          </span>
+        </div>
+      </div>
+      <div class="form_submit">
+        <app-button
+          [btnClass]="'btn_success'"
+          [buttonText]="'Login'"
+          [type]="'submit'"
+          [disabled]="!loginForm.valid"
+        ></app-button>
+        <div class="register_link">
+          If You don't have an account You can <a routerLink="/registration">Registration</a>
+        </div>
+      </div>
+    </form>
+    <div class="auth_img"></div>
+  </div>
+</div>
+
+

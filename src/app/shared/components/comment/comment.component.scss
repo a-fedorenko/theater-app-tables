@@ -1,0 +1,25 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid var(--dark-color);
+  border-radius: 15px;
+  color: #333931;
+  position: relative;
+
+  &_author {
+    margin-top: 15px;
+  }
+ 
+  &_pos {
+    margin-top: 10px;
+    color: var(--active);
+  }
+
+  .quite_img {
+    width: 60px;
+    position: absolute;
+    top: -25px;
+    left: -25px;
+  }
+}

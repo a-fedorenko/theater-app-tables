@@ -1,0 +1,16 @@
+<div class="header">
+  <div class="header_wrapper">
+    <a routerLink="courses"><img src="assets/images/logo.png" alt="logo" class="courses_logo"></a>
+    <div class="header_content">
+      <ul class="header_links">
+        <li class="links_item active"><a routerLink="courses">Home</a></li>
+        <li class="links_item"><a routerLink="about">About</a></li>
+        <li class="links_item"><a href="#blog">Blog</a></li>
+        <li class="links_item"><a href="#reviews">Reviews</a></li>
+        <li class="links_item"><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <app-button [iconWrap]="true" [btnClass]="'header_logout'" [buttonText]="isSingIn ? 'Logout' : 'Create Account'" [type]="'button'" [iconName]="arrow" (click)="log()"></app-button>
+  </div>
+</div>
+

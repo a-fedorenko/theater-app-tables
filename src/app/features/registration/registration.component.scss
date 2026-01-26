@@ -1,0 +1,56 @@
+input {
+  width: 100%;
+  background-color: var(--light-color);
+  border-radius: 0;
+  font-size: 14px;
+  padding: 15px;
+  height: 50px;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.input_field {
+  margin-bottom: 15px;
+}
+
+.auth {
+  &_block {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--white);
+    margin: 80px 100px;
+  }
+
+  &_form {
+    flex: 0 0 50%;
+    padding: 30px;
+  }
+
+  &_img {
+    flex: 0 0 50%;
+    background-image: url('../../../assets/images/signup.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.form {
+  &_title {
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  &_submit {
+    display: flex;
+    align-items: center;
+
+    .register_link {
+      margin-left: 20px;
+    }
+  }
+}

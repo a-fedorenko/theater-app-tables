@@ -1,0 +1,11 @@
+<div class="post_card">
+  <div class="post_content">
+    <img class="post_img" [src]="post.url" alt="course_img"/>
+    <ul class="post_info">
+      <li><fa-icon class="info_icon" [icon]="calendar"></fa-icon> {{ post.creationDate | creationDate }}</li>
+      <li><fa-icon class="info_icon" [icon]="comment"></fa-icon> Comment (0{{ post.comments.length }})</li>
+    </ul>
+    <p class="post_text">{{ post.text }}</p>
+
+    <ng-content></ng-content>
+</div>

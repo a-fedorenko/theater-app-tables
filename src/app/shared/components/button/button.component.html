@@ -1,0 +1,14 @@
+<button *ngIf="!iconWrap && !btnIcon" type="button" class="btn" [ngClass]="btnClass" [type]="type" [disabled]="disabled">
+  {{ buttonText }}
+  <fa-icon *ngIf="iconName" class="btn_icon" [icon]="iconName"></fa-icon>
+</button>
+
+<button *ngIf="iconWrap" type="button" class="btn btn_wrap" [ngClass]="btnClass" [type]="type" [disabled]="disabled">
+  {{ buttonText }}
+  <div class="icon_wrapper"><fa-icon class="btn_icon" [icon]="iconName"></fa-icon></div>
+</button>
+
+<button *ngIf="btnIcon" [style.backgroundColor]="btnColor" class="btn_icon" type="button" [ngClass]="btnClass" [type]="type" [disabled]="disabled">
+  <fa-icon class="btn_icon" [icon]="iconName"></fa-icon>
+</button>
+

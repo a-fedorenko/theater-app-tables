@@ -1,0 +1,35 @@
+.container {
+  background-color: var(--white);
+
+  .header {
+    position: relative;
+
+    &_title {
+      width: 350px;
+      position: absolute;
+      top: calc(50% - 60px);
+      left: calc(50% - 175px);
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--active);
+    }
+  }
+
+  .wrapper {
+    padding: 70px 0;
+  }
+
+  .section {
+    margin-top: 20px;
+  }
+
+  ul {
+    list-style-type: disc;
+
+    li {
+      margin-left: 20px;
+    }
+  }
+} 

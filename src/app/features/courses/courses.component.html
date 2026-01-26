@@ -1,0 +1,57 @@
+<section class="sertion_search">
+  <div class="search_title">
+    <span class="search_subtitile">Welcome Edunity online courses</span>
+    <h1>Achieving Your Dreams Through Education</h1>
+    <p class="search_desription">We are experienced in educationl platform and skilled strategies for the success of our online learning.</p>
+    <app-search [placeholder]="'Search course'"></app-search>
+  </div>
+  <img class="search_img" src="assets/images/search_section.png" />
+</section>
+
+<section class="sertion_categories">
+  <app-category *ngFor="let item of categories" [color]="item.color" [icon]="item.icon" [categoryText]="item.name"></app-category>
+</section>
+
+<section class="wrapper sertion_courses">
+  <app-label [labelText]="'Top Popular Course'"></app-label>
+  <div class="courses_title">
+    <h1>Course Student Can Join With Us.</h1>
+    <app-button [iconWrap]="true" [btnClass]="'header_logout'" [buttonText]="'Load Mode Courses'" [type]="'button'" [iconName]="arrowIcon"></app-button>
+  </div>
+  <app-course-list
+    (show)="showCourse($event)"
+    [courses]="allCourses"
+  >
+</app-course-list>
+</section>
+
+<section class="sertion_comments" id="reviews">
+  <app-label [labelText]="'testimonial'"></app-label>
+  <div class="comments_title">
+    <h1>Creating A Community Of Life Long Learners.</h1>
+  </div>
+  <div class="wrapper sertion_comments-wrapper">
+    <app-comment *ngFor="let item of comments" [comment]="item"></app-comment>
+  </div>
+</section>
+
+<section class="sertion_posts" id="blog">
+  <div class="post_label">
+    <app-label [labelText]="'BLOG POST'"></app-label>
+  </div>
+  <div class="posts_title">
+    <h1>Most Popular Post.</h1>
+    <app-button [iconWrap]="true" [btnClass]="'header_logout'" [buttonText]="'All Blog Post'" [type]="'button'" [iconName]="arrowIcon"></app-button>
+  </div>
+  <div class="wrapper sertion_posts-wrapper">
+    <app-post *ngFor="let item of posts" [post]="item">
+      <app-button [iconWrap]="true" [btnClass]="'post_open'" [buttonText]="'Read More'" [type]="'button'" [iconName]="arrowIcon"></app-button>
+    </app-post>
+  </div>
+</section>
+
+
+
+
+
+

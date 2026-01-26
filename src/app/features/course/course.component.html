@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="header">
+    <img style="width: 100%;" src="assets/images/course_background.png" alt="img">
+    <span class="header_title">Course Details</span>
+  </div>
+  <div class="wrapper" *ngIf="selectedCourse">
+    <table class="course-details">
+      <tr>
+        <td style="width: 75%;" class="course-info">
+            <table>
+                <tr>
+                    <td>
+                        <img src="assets/images/course_img.png" alt="Course Image" style="width: 100%; height: auto;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Web Development Fully Complete Guideline</h1>
+                        <p>Lesson 10 | 9:00AM - 1:00PM | Students 20+</p>
+                        <div class="rating">
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9734;</span>
+                            <span>(4.7)</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="button-group">
+                            <a href="#">Overview</a>
+                            <a href="#">Curriculum</a>
+                            <a href="#">Instructor</a>
+                            <a href="#">Reviews</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Course Description</h2>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim..
+                        </p>
+                        <p style="margin-bottom: 20px;">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum..
+                        </p>
+
+                        <h2>What Will I Learn From This Course?</h2>
+                        <p>
+                          Himenaeos. Vestibulum sollicitudin varius mauris non dignissim. Sed quis iaculis est. Nulla quam neque,
+                          interdum vitae fermentum lacinia, interdum eu magna. Mauris non posuere tellus. Donec quis euismod tellus.
+                          Nam vel lacus eu nisl bibendum accumsan vitae vitae nibh. Nam nec eros id magna hendrerit sagittis Nullam
+                          sed mi non odio feugiat volutpat sit amet nec elit. Maecenas id hendrerit ipsum
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table style="width: 25%; padding: 25px; background-color: #E8E8F4;">
+                <tr>
+                    <td>
+                        <img [src]="selectedCourse.url" alt="Sidebar Image">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Course Fee</h2>
+                        <p><strong>Price:</strong> <span style="text-decoration: line-through;">$120</span> $60</p>
+                        <p><strong>Guarantee:</strong> 29-Day Money-Back Guarantee</p>
+                        <a href="#" class="buy-now">BUY NOW</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Course Details</h3>
+                        <p><strong>Start Date:</strong> 4:00 PM - 6:00 PM</p>
+                        <p><strong>Enrolled:</strong> 100</p>
+                        <p><strong>Lectures:</strong> 80</p>
+                        <p><strong>Skill Level:</strong> Basic</p>
+                        <p><strong>Class Days:</strong> Monday-Friday</p>
+                        <p><strong>Language:</strong> English</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
